@@ -11,3 +11,4 @@
 *.data
 *.mem
 ./samples
+*.out
