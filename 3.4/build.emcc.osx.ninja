@@ -1,5 +1,8 @@
-#
+
 cc = emcc
+
+# if MINGW
+# cmd = cmd /c
 cmd =
 objExt = bc
 objLib = bc
@@ -25,11 +28,11 @@ build ${out}/antlr3baserecognizer.${objExt}: objRule ${src}/antlr3baserecognizer
 build ${out}/antlr3basetree.${objExt}: objRule ${src}/antlr3basetree.c
 build ${out}/antlr3basetreeadaptor.${objExt}: objRule ${src}/antlr3basetreeadaptor.c
 build ${out}/antlr3bitset.${objExt}: objRule ${src}/antlr3bitset.c
-build ${out}/antlr3collections.${objExt}: objRule ${src}/antlr3collections.c 
+build ${out}/antlr3collections.${objExt}: objRule ${src}/antlr3collections.c
 build ${out}/antlr3commontoken.${objExt}: objRule ${src}/antlr3commontoken.c
 build ${out}/antlr3commontree.${objExt}: objRule ${src}/antlr3commontree.c
 build ${out}/antlr3commontreeadaptor.${objExt}: objRule ${src}/antlr3commontreeadaptor.c
-build ${out}/antlr3commontreenodestream.${objExt}: objRule ${src}/antlr3commontreenodestream.c 
+build ${out}/antlr3commontreenodestream.${objExt}: objRule ${src}/antlr3commontreenodestream.c
 build ${out}/antlr3convertutf.${objExt}: objRule ${src}/antlr3convertutf.c
 build ${out}/antlr3cyclicdfa.${objExt}: objRule ${src}/antlr3cyclicdfa.c
 build ${out}/antlr3debughandlers.${objExt}: objRule ${src}/antlr3debughandlers.c
@@ -47,4 +50,3 @@ build ${out}/antlr3treeparser.${objExt}: objRule ${src}/antlr3treeparser.c
 
 
 build ${out}/libantlr3c.${objLib}: libRule ${out}/antlr3treeparser.${objExt} ${out}/antlr3baserecognizer.${objExt} ${out}/antlr3basetree.${objExt} ${out}/antlr3basetreeadaptor.${objExt} ${out}/antlr3bitset.${objExt} ${out}/antlr3collections.${objExt} ${out}/antlr3commontoken.${objExt} ${out}/antlr3commontree.${objExt} ${out}/antlr3commontreeadaptor.${objExt} ${out}/antlr3commontreenodestream.${objExt} ${out}/antlr3convertutf.${objExt} ${out}/antlr3cyclicdfa.${objExt} ${out}/antlr3debughandlers.${objExt} ${out}/antlr3encodings.${objExt} ${out}/antlr3exception.${objExt} ${out}/antlr3filestream.${objExt} ${out}/antlr3inputstream.${objExt} ${out}/antlr3intstream.${objExt} ${out}/antlr3lexer.${objExt} ${out}/antlr3parser.${objExt} ${out}/antlr3rewritestreams.${objExt} ${out}/antlr3string.${objExt} ${out}/antlr3tokenstream.${objExt} ${out}/antlr3treeparser.${objExt}
-
