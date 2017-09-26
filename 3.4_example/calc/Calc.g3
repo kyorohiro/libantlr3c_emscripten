@@ -1,0 +1,21 @@
+grammar Calc;
+
+options {
+    language = C;
+    output = AST;
+    ASTLabelType=pANTLR3_BASE_TREE;
+}
+gprog: (gstat {
+    			pANTLR3_STRING s = $gstat.tree->toStringTree($gstat.tree);
+    	    printf(" tree \%s\n", s->chars);
+        })+;
+gstat: gexpr NEWLINE -> gexpr | NEWLINE ->;
+gexpr: gmultExpr (( PLUS^ | MINUS^ ) gmultExpr)*;
+gmultExpr: gatom (TIMES^ gatom)*;
+gatom: INT | '('! gexpr ')'!;
+INT: '0'..'9'+;
+NEWLINE: '\r'? '\n';
+WS: (' '|'\t')+{$channel = HIDDEN;};
+PLUS: '+';
+MINUS: '-';
+TIMES: '*';

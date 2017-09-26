@@ -1,0 +1,32 @@
+
+cc = emcc
+
+# if MINGW
+# cmd = cmd /c
+cmd =
+objExt = bc
+objLib = bc
+appExt = js
+
+
+#
+src = .
+out = .
+
+incOpt = -I. -I../../3.4/include
+dOpt = -DHAVE_MALLOC_H -DPLATFORM_EMCC
+#libOpt = -L../../3.4 -L. -lantlr3c
+libOpt = -L. ../../3.4/libantlr3c.bc
+
+#
+# Rule
+rule objRule
+ command = ${cmd} ${cc} -c $in -o $out ${incOpt} ${dOpt}
+
+rule exeRule
+ command = ${cmd} ${cc} ${libOpt} ${dOpt} -O2 -o ${out} $in
+
+build ${out}/CalcLexer.${objExt}: objRule ${src}/CalcLexer.c
+build ${out}/CalcParser.${objExt}: objRule ${src}/CalcParser.c
+build ${out}/Main.${objExt}: objRule ${src}/Main.c
+build ${out}/a.${appExt}: exeRule ${out}/CalcLexer.${objExt} ${out}/CalcParser.${objExt} ${out}/Main.${objExt}
